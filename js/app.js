@@ -36,13 +36,36 @@ class Player {
 
   }
 
-
+// Draws player on the screen
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
 
   handleInput() {
-
+    let key = event.which;
+    switch (key) {
+      case 37:
+        if (player.x > 5 && player.x < 500) {
+          player.x -= 50;
+        }
+        break;
+      case 39:
+        if (player.x >= 5 && player.x < 400) {
+          player.x += 50;
+        }
+        break;
+      case 38:
+        if (player.y >= 10 && player.y <= 440) {
+          player.y -= 30;
+        }
+        break;
+      case 40:
+        if (player.y >= -10 && player.y <= 410) {
+          player.y += 30;
+        }
+        break;
+      default:
+    }
   }
 }
 
@@ -53,7 +76,7 @@ let enemy2 = new Enemy(this.sprite, 0, 150);
 let enemy3 = new Enemy(this.sprite, 0, 225);
 const allEnemies = [enemy1, enemy2, enemy3];
 // Place the player object in a variable called player
-let player = new Player('images/char-horn-girl.png', 205, 430);
+let player = new Player('images/char-horn-girl.png', 205, 440);
 
 
 
@@ -67,5 +90,5 @@ document.addEventListener('keyup', function(e) {
         40: 'down'
     };
 
-    player.handleInput(allowedKeys[e.keyCode]);
+    player.handleInput(allowedKeys[e.key]);
 });

@@ -1,7 +1,15 @@
-// Enemies our player must avoid
-class Enemy  {
-  constructor(sprite = 'images/enemy-bug.png', x, y, ) {
+class Entities {
+  constructor(sprite, x, y) {
     this.sprite = sprite;
+    this.x = x;
+    this.y = y;
+  }
+}
+// Enemies our player must avoid
+class Enemy extends Entities {
+  constructor(sprite, x, y, ) {
+    super();
+    this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
   }
@@ -25,11 +33,12 @@ class Enemy  {
 
 
 //Player class
-class Player {
+class Player extends Entities {
   constructor(sprite, x, y) {
-    this.sprite = sprite;
-    this.x = x;
-    this.y = y;
+    super();
+    this.sprite = 'images/char-horn-girl.png';
+    this.x = 205;
+    this.y = 440;
   }
 
   update(dt) {}
@@ -87,7 +96,7 @@ let enemy3 = new Enemy(this.sprite, -100, 225);
 
 const allEnemies = [enemy1, enemy2, enemy3];
 // Create the player
-let player = new Player('images/char-horn-girl.png', 205, 440);
+let player = new Player();
 
 
 //Create event listener on keys to be used for player movement

@@ -8,9 +8,12 @@ class Enemy  {
 
   // Updates the enemy's position and sets speed
   update(dt) {
-    this.x += dt * 150;
     if (this.x > 505) {
       this.x = -10;
+    } else {
+      enemy1.x += dt * 100;
+      enemy2.x += dt * 55;
+      enemy3.x += dt * 70;
     }
   }
 
@@ -29,43 +32,53 @@ class Player {
     this.y = y;
   }
 
-  update(dt) {
-
-  }
+  update(dt) {}
 
 // Draws player on the screen
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
 
-//Handles player movement, set the boundaries for player placement on board
+//Handles player movement, sets the boundaries for player placement on board
   handleInput() {
     let key = event.which;
     switch (key) {
       case 37:
-        if (player.x > 5 && player.x < 500) {
-          player.x -= 50;
+        if (this.x > 5 && this.x < 500) {
+          this.x -= 50;
         }
         break;
       case 39:
-        if (player.x >= 5 && player.x < 400) {
-          player.x += 50;
+        if (this.x >= 5 && this.x < 400) {
+          this.x += 50;
         }
         break;
       case 38:
-        if (player.y >= 10 && player.y <= 440) {
-          player.y -= 30;
+        if (this.y >= 10 && this.y <= 440) {
+          this.y -= 30;
         }
         break;
       case 40:
-        if (player.y >= -10 && player.y <= 410) {
-          player.y += 30;
+        if (this.y >= -10 && this.y <= 410) {
+          this.y += 30;
         }
         break;
       default:
     }
   }
+
+  // gameWon() {
+  //    if(this.y = -10) {
+  //      !wonGame;
+  //      const modal = document.querySelector('.modal');
+  //      modal.style.visibility = "visible";
+  //    } else {
+  //      modal.style.visibility = 'hidden';
+  //    }
+  // }
 }
+
+let wonGame = false;
 
 // Create enemies
 let enemy1 = new Enemy(this.sprite, 0, 60);
@@ -88,3 +101,7 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.key]);
 });
+
+// if(player.y = -10) {
+//   player.gameWon();
+// }

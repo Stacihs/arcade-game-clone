@@ -76,15 +76,19 @@ class Player extends Entities {
     }
   }
 
-  // gameWon() {
-  //    if(this.y = -10) {
-  //      !wonGame;
-  //      const modal = document.querySelector('.modal');
-  //      modal.style.visibility = "visible";
-  //    } else {
-  //      modal.style.visibility = 'hidden';
-  //    }
-  // }
+  gameWon() {
+     if(this.y = -10) {
+       const modal = document.querySelector('.modal');
+       modal.style.visibility = "visible";
+     } else {
+       modal.style.visibility = 'hidden';
+     }
+  }
+
+  reset() {
+    player.x = 205;
+    player.y = 440;
+  }
 }
 
 let wonGame = false;

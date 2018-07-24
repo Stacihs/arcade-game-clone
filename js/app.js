@@ -5,43 +5,47 @@ class Entities {
     this.y = y;
   }
 }
-// Enemies our player must avoid
+
+// Enemy class object used to create enemies
 class Enemy extends Entities {
-  constructor(sprite, x, y, ) {
+  constructor(sprite, x, y) {
     super();
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
   }
 
-  // Updates the enemy's position and sets speed
+// Updates the enemy's position and sets speed
   update(dt) {
     if (this.x > 505) {
       this.x = -10;
     } else {
       enemy1.x += dt * 100;
       enemy2.x += dt * 55;
-      enemy3.x += dt * 70;
+      enemy3.x += dt * 75;
     }
   }
 
-  // Draws the enemy on the screen
+// Draws the enemy on the screen
   render() {
-      ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
 }
 
 
-//Player class
+
+//Player class object, used to create players
 class Player extends Entities {
-  constructor(sprite, x, y) {
+  constructor(sprite, x, y, z) {
     super();
     this.sprite = 'images/char-horn-girl.png';
     this.x = 205;
     this.y = 440;
   }
 
-  update(dt) {}
+  update(dt) {
+
+  }
 
 // Draws player on the screen
   render() {
@@ -76,45 +80,50 @@ class Player extends Entities {
     }
   }
 
-  gameWon() {
-     if(this.y = -10) {
-       const modal = document.querySelector('.modal');
-       modal.style.visibility = "visible";
-     } else {
-       modal.style.visibility = 'hidden';
-     }
-  }
-
   reset() {
     player.x = 205;
     player.y = 440;
   }
+
+  gameOver() {
+    if(this.y = -10) {
+      modal.style.visibility = "visibile";
+    }
+  }
 }
 
-let wonGame = false;
 
 // Create enemies
 let enemy1 = new Enemy(this.sprite, 0, 60);
 let enemy2 = new Enemy(this.sprite, 150, 150);
 let enemy3 = new Enemy(this.sprite, -100, 225);
-
 const allEnemies = [enemy1, enemy2, enemy3];
+
 // Create the player
 let player = new Player();
+
+const modal = document.querySelector('.modal');
+const button = document.querySelector('button');
 
 
 //Create event listener on keys to be used for player movement
 document.addEventListener('keyup', function(e) {
-    const allowedKeys = {
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
-    };
+  const allowedKeys = {
+      37: 'left',
+      38: 'up',
+      39: 'right',
+      40: 'down'
+  };
 
-    player.handleInput(allowedKeys[e.key]);
+  player.handleInput(allowedKeys[e.key]);
 });
 
-// if(player.y = -10) {
-//   player.gameWon();
+// if(this.y = -10) {
+//   modal.style.visibility = "visibile";
+//   player.gameOver();
 // }
+
+button.addEventListener('click', function(e) {
+  player.reset();
+  modal.style.visibility = "hidden";
+})

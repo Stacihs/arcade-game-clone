@@ -11,6 +11,27 @@ h1 {
   padding: 2rem;
 }
 
+h2 {
+  font-size: 2em;
+  padding: 0 2rem;
+}
+
+h2,
+p {
+  font-family: 'Nunito', sans-serif;
+  margin: .5rem;
+}
+
+p {
+  font-size: 1.5em;
+  padding: .5rem 5rem;
+}
+
+span {
+  color: red;
+  font-style: italic;
+}
+
 .modal {
   position: absolute;
   top: 50%;

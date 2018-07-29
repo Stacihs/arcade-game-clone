@@ -1,11 +1,10 @@
+
 class Entities {
   constructor(sprite, x, y) {
     this.sprite = sprite;
     this.x = x;
     this.y = y;
   }
-
-
 }
 
 // Enemy class object which is used to create enemies
@@ -32,7 +31,6 @@ class Enemy extends Entities {
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
-
 }
 
 
@@ -48,7 +46,7 @@ class Player extends Entities {
   update() {
 //check to see if enemy and player collide
     for (let enemy of allEnemies) {
-      if (this.y - 16 === enemy.y) {
+      if (this.y - 16 === enemy.y && this.x >= enemy.x - 75 && this.x <= enemy.x + 75) {
         player.reset();
       }
     }
@@ -95,8 +93,8 @@ class Player extends Entities {
   }
 
   gameOver() {
-      modal.style.visibility = "visible";
-    }
+    modal.style.visibility = "visible";
+  }
 }
 
 
@@ -130,4 +128,4 @@ document.addEventListener('keyup', function(e) {
 button.addEventListener('click', function(e) {
   player.reset();
   modal.style.visibility = "hidden";
-})
+});

@@ -1,4 +1,4 @@
-
+// Base class object in the game
 class Entities {
   constructor(sprite, x, y) {
     this.sprite = sprite;
@@ -33,8 +33,7 @@ class Enemy extends Entities {
   }
 }
 
-
-//Player class object which is used to create players
+// Player class object which is used to create players
 class Player extends Entities {
   constructor(sprite, x, y) {
     super();
@@ -44,7 +43,7 @@ class Player extends Entities {
   }
 
   update() {
-//check to see if enemy and player collide
+// Check to see if enemy and player collide
     for (let enemy of allEnemies) {
       if (this.y - 16 === enemy.y && this.x >= enemy.x - 75 && this.x <= enemy.x + 75) {
         player.reset();
@@ -57,7 +56,7 @@ class Player extends Entities {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
 
-//Handles player movement, sets the boundaries for player placement on board
+// Handles player movement, sets the boundaries for player placement on board
   handleInput() {
     let key = event.which;
     switch (key) {
@@ -87,17 +86,18 @@ class Player extends Entities {
     }
   }
 
+// Sends player back to original position
   reset() {
     this.x = 205;
     this.y = 405;
   }
 
+// Modal pops ups notifying player of win and gives player the option to play again
   gameOver() {
-    modal.style.visibility = "visible";
+    modal.style.visibility = 'visible';
     modal.focus();
   }
 }
-
 
 // Create enemies
 const enemy1 = new Enemy(this.sprite, 0, 61);
@@ -106,13 +106,13 @@ const enemy3 = new Enemy(this.sprite, -100, 225);
 const allEnemies = [enemy1, enemy2, enemy3];
 
 // Create the player
-let player = new Player();
+const player = new Player();
 
 const modal = document.querySelector('.modal');
 const button = document.querySelector('button');
 
 
-//Create event listener on keys to be used for player movement
+// Create event listener on keys to be used for player movement
 document.addEventListener('keyup', function(e) {
   const allowedKeys = {
       37: 'left',
@@ -123,8 +123,6 @@ document.addEventListener('keyup', function(e) {
 
   player.handleInput(allowedKeys[e.key]);
 });
-
-
 
 button.addEventListener('click', function(e) {
   player.reset();

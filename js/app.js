@@ -4,6 +4,8 @@ class Entities {
     this.x = x;
     this.y = y;
   }
+
+
 }
 
 // Enemy class object used to create enemies
@@ -30,17 +32,17 @@ class Enemy extends Entities {
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
-}
 
+}
 
 
 //Player class object, used to create players
 class Player extends Entities {
-  constructor(sprite, x, y, z) {
+  constructor(sprite, x, y) {
     super();
     this.sprite = 'images/char-horn-girl.png';
     this.x = 205;
-    this.y = 440;
+    this.y = 405;
   }
 
   update(dt) {
@@ -58,22 +60,24 @@ class Player extends Entities {
     switch (key) {
       case 37:
         if (this.x > 5 && this.x < 500) {
-          this.x -= 50;
+          this.x -= 100;
         }
         break;
       case 39:
         if (this.x >= 5 && this.x < 400) {
-          this.x += 50;
+          this.x += 100;
         }
         break;
       case 38:
-        if (this.y >= 10 && this.y <= 440) {
-          this.y -= 30;
+        if (this.y > 80 && this.y < 440) {
+            this.y -= 82;
+        } else if (this.y = -5) {
+          player.gameOver();
         }
         break;
       case 40:
-        if (this.y >= -10 && this.y <= 410) {
-          this.y += 30;
+        if (this.y >= -5 && this.y < 405) {
+          this.y += 82;
         }
         break;
       default:
@@ -81,22 +85,20 @@ class Player extends Entities {
   }
 
   reset() {
-    player.x = 205;
-    player.y = 440;
+    this.x = 205;
+    this.y = 405;
   }
 
   gameOver() {
-    if(this.y = -10) {
-      modal.style.visibility = "visibile";
+      modal.style.visibility = "visible";
     }
-  }
 }
 
 
 // Create enemies
-let enemy1 = new Enemy(this.sprite, 0, 60);
-let enemy2 = new Enemy(this.sprite, 150, 150);
-let enemy3 = new Enemy(this.sprite, -100, 225);
+const enemy1 = new Enemy(this.sprite, 0, 60);
+const enemy2 = new Enemy(this.sprite, 150, 145);
+const enemy3 = new Enemy(this.sprite, -100, 225);
 const allEnemies = [enemy1, enemy2, enemy3];
 
 // Create the player
@@ -118,10 +120,7 @@ document.addEventListener('keyup', function(e) {
   player.handleInput(allowedKeys[e.key]);
 });
 
-// if(this.y = -10) {
-//   modal.style.visibility = "visibile";
-//   player.gameOver();
-// }
+
 
 button.addEventListener('click', function(e) {
   player.reset();

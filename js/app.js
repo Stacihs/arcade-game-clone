@@ -94,6 +94,7 @@ class Player extends Entities {
 
   gameOver() {
     modal.style.visibility = "visible";
+    modal.focus();
   }
 }
 

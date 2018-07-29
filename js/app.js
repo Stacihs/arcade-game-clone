@@ -8,7 +8,7 @@ class Entities {
 
 }
 
-// Enemy class object used to create enemies
+// Enemy class object which is used to create enemies
 class Enemy extends Entities {
   constructor(sprite, x, y) {
     super();
@@ -36,7 +36,7 @@ class Enemy extends Entities {
 }
 
 
-//Player class object, used to create players
+//Player class object which is used to create players
 class Player extends Entities {
   constructor(sprite, x, y) {
     super();
@@ -45,8 +45,13 @@ class Player extends Entities {
     this.y = 405;
   }
 
-  update(dt) {
-
+  update() {
+//check to see if enemy and player collide
+    for (let enemy of allEnemies) {
+      if (this.y - 16 === enemy.y) {
+        player.reset();
+      }
+    }
   }
 
 // Draws player on the screen
@@ -96,8 +101,8 @@ class Player extends Entities {
 
 
 // Create enemies
-const enemy1 = new Enemy(this.sprite, 0, 60);
-const enemy2 = new Enemy(this.sprite, 150, 145);
+const enemy1 = new Enemy(this.sprite, 0, 61);
+const enemy2 = new Enemy(this.sprite, 150, 143);
 const enemy3 = new Enemy(this.sprite, -100, 225);
 const allEnemies = [enemy1, enemy2, enemy3];
 

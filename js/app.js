@@ -46,7 +46,7 @@ class Player extends Entities {
 // Check to see if enemy and player collide
     for (let enemy of allEnemies) {
       if (this.y - 16 === enemy.y && this.x >= enemy.x - 75 && this.x <= enemy.x + 75) {
-        player.reset();
+        this.reset();
       }
     }
   }
@@ -74,7 +74,7 @@ class Player extends Entities {
         if (this.y > 80 && this.y < 440) {
             this.y -= 82;
         } else if (this.y = -5) {
-          player.gameOver();
+          this.gameOver();
         }
         break;
       case 40:

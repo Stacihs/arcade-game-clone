@@ -100,17 +100,17 @@ class Player extends Entities {
 }
 
 // Create enemies
-const enemy1 = new Enemy(this.sprite, 0, 61, 180);
-const enemy2 = new Enemy(this.sprite, 150, 143, 225);
-const enemy3 = new Enemy(this.sprite, -100, 225, 150);
-const allEnemies = [enemy1, enemy2, enemy3];
+const allEnemies = [
+  new Enemy(this.sprite, 0, 61, 180),
+  new Enemy(this.sprite, 150, 143, 225),
+  new Enemy(this.sprite, -100, 225, 150)
+];
 
 // Create the player
 const player = new Player();
 
 const modal = document.querySelector('.modal');
 const button = document.querySelector('button');
-
 
 // Create event listener on keys to be used for player movement
 document.addEventListener('keyup', function(e) {

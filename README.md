@@ -5,7 +5,7 @@ This is a project required for the Udacity Front End Web Developer Nanodegree pr
 
 #### Game Access
 
-You can access this game by going to https://stacihs.github.io/arcade-game-clone/. The recommended browser for play is Google Chrome.
+You can access this game by going to https://stacihs.github.io/arcade-game-clone/. You may also clone or download the repository, to play the game locally on your device. The recommended browser for play is Google Chrome.
 
 #### Rules of Play
 

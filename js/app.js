@@ -126,5 +126,5 @@ document.addEventListener('keyup', function(e) {
 
 button.addEventListener('click', function(e) {
   player.reset();
-  modal.style.visibility = "hidden";
+  modal.style.visibility = 'hidden';
 });

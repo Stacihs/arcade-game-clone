@@ -1,3 +1,4 @@
+'use strict'
 // Base class object in the game
 class Entities {
   constructor(sprite, x, y) {
@@ -9,11 +10,12 @@ class Entities {
 
 // Enemy class object which is used to create enemies
 class Enemy extends Entities {
-  constructor(sprite, x, y) {
+  constructor(sprite, x, y, speed) {
     super();
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
+    this.speed = speed;
   }
 
 // Updates the enemy's position and sets speed
@@ -21,9 +23,7 @@ class Enemy extends Entities {
     if (this.x > 505) {
       this.x = -10;
     } else {
-      enemy1.x += dt * 100;
-      enemy2.x += dt * 55;
-      enemy3.x += dt * 75;
+      this.x += dt * this.speed;
     }
   }
 
@@ -100,9 +100,9 @@ class Player extends Entities {
 }
 
 // Create enemies
-const enemy1 = new Enemy(this.sprite, 0, 61);
-const enemy2 = new Enemy(this.sprite, 150, 143);
-const enemy3 = new Enemy(this.sprite, -100, 225);
+const enemy1 = new Enemy(this.sprite, 0, 61, 180);
+const enemy2 = new Enemy(this.sprite, 150, 143, 225);
+const enemy3 = new Enemy(this.sprite, -100, 225, 150);
 const allEnemies = [enemy1, enemy2, enemy3];
 
 // Create the player
